@@ -6,6 +6,7 @@
 
 var fs = require("fs"),
     path = require("path"),
+    parse = require('url-parse'),
     nuci = require("./nuci"),
     util = require("./util");
 
@@ -19,25 +20,13 @@ module.exports = {
     run: function(args, callback) {
         if (!args || args.length === 0) { return util.err("&require-command"); }
 
-        var host = args[0];
+        var engine = nuci.parseEngineUri('nuci://' + args[0]);
 
-        /*
-        var cmd = args.shift().trim();
-        var fnc = "cmd" + cmd.charAt(0).toUpperCase() + cmd.slice(1).toLowerCase();
-
-        if (typeof ndev[fnc] === "function") {
-            return ndev[fnc](args, callback);
-        }
-
-        switch (cmd) {
-            case "--help":
-                return this.getHelp(args);
-            case "--version":
-                return this.getVersion();
-        }
-
-        return util.err("&cmd-undefined", { cmd: cmd });
-        */
+        nuci.connect(engine, (err, info) => {
+            if (err) { console.log(err); }
+            nuci.sendArgs(args);
+            nuci.prompt();
+        });
     },
 
     /**

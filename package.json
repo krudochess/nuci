@@ -1,6 +1,6 @@
 {
     "name": "nuci",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "license": "MIT",
     "author": {
         "name": "Francesco Bianco",
@@ -25,6 +25,8 @@
         "mocha": "^3.2.0"
     },
     "dependencies": {
-        "colors": "^1.1.2"
+        "colors": "^1.1.2",
+        "readline": "^1.3.0",
+        "url-parse": "^1.2.0"
     }
 }
