@@ -11,7 +11,7 @@
         "url": "https://github.com/krudochess/nuci.git"
     },
     "bin": {
-        "ndev": "./bin/nuci"
+        "nuci": "./bin/nuci"
     },
     "scripts": {
         "test": "mocha --reporter spec --recursive | sed '/^\\s*$/d'",
